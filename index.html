@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Noime Jovy Marie Jabanag | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fefefe; color: #1a1e2b; line-height: 1.5; scroll-behavior: smooth; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+    nav { position: sticky; top: 0; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(12px); z-index: 100; border-bottom: 1px solid #e9eef3; padding: 1rem 0; }
+    .nav-flex { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .logo { font-weight: 700; font-size: 1.6rem; letter-spacing: -0.02em; background: linear-gradient(135deg, #1f2b3c, #3b4b6e); background-clip: text; -webkit-background-clip: text; color: transparent; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; font-weight: 500; color: #2c3e4e; transition: color 0.2s; }
+    .nav-links a:hover { color: #2666cf; }
+    .btn { display: inline-block; background: #1f2b3c; color: white; padding: 0.6rem 1.4rem; border-radius: 40px; text-decoration: none; font-weight: 500; transition: all 0.25s; border: none; cursor: pointer; }
+    .btn-outline { background: transparent; border: 1px solid #1f2b3c; color: #1f2b3c; }
+    .btn-outline:hover { background: #1f2b3c; color: white; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
+    section { padding: 5rem 0; border-bottom: 1px solid #edf2f7; }
+    .section-title { font-size: 2rem; font-weight: 700; margin-bottom: 2rem; letter-spacing: -0.01em; position: relative; display: inline-block; }
+    .section-title:after { content: ''; position: absolute; bottom: -10px; left: 0; width: 50%; height: 3px; background: #2666cf; border-radius: 4px; }
+    .hero { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 2rem; }
+    .hero-content { flex: 1; }
+    .hero-content h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; }
+    .highlight { color: #2666cf; }
+    .hero-content p { font-size: 1.2rem; color: #4a5b6e; max-width: 500px; margin: 1rem 0 1.8rem; }
+    .hero-img { flex: 0.8; text-align: center; }
+    .hero-img img { width: 280px; height: 280px; object-fit: cover; border-radius: 50%; box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1); border: 4px solid white; }
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 1rem; }
+    .skill-card { background: white; border-radius: 28px; padding: 1.6rem; flex: 1 1 200px; text-align: center; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.03), 0 0 0 1px #f0f2f5; transition: all 0.2s; }
+    .skill-card i { font-size: 2.5rem; color: #2666cf; margin-bottom: 1rem; }
+    .skill-card h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+    .skill-card p { font-size: 0.9rem; color: #5e6f8d; }
+    .skill-card:hover { transform: translateY(-5px); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
+    .project-card { background: white; border-radius: 24px; overflow: hidden; transition: all 0.25s; box-shadow: 0 8px 20px rgba(0,0,0,0.02), 0 0 0 1px #edf2f7; }
+    .project-card:hover { transform: translateY(-6px); box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12); }
+    .project-img { background: #eef2fa; height: 180px; display: flex; align-items: center; justify-content: center; color: #2c3e66; font-size: 3rem; }
+    .project-info { padding: 1.5rem; }
+    .project-info h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .project-info p { color: #52647a; margin-bottom: 1rem; font-size: 0.95rem; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem; }
+    .tag { background: #eef3fc; padding: 0.2rem 0.8rem; border-radius: 40px; font-size: 0.75rem; font-weight: 500; color: #1f4f9e; }
+    .project-link { text-decoration: none; font-weight: 600; color: #2666cf; display: inline-flex; align-items: center; gap: 6px; }
+    .edit-hint { font-size: 0.75rem; background: #f9fafb; display: inline-block; padding: 0.2rem 0.6rem; border-radius: 20px; margin-left: 1rem; color: #5f7a9e; }
+    .editable { cursor: pointer; transition: background 0.1s; padding: 0 0.1rem; border-radius: 8px; }
+    .editable:hover { background: #fff2df; }
+    .contact-flex { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; align-items: center; }
+    .contact-info { flex: 1; }
+    .social-links { display: flex; gap: 1.2rem; margin-top: 1rem; }
+    .social-links a { color: #2c3e66; font-size: 1.6rem; transition: color 0.2s; }
+    .social-links a:hover { color: #2666cf; }
+    footer { text-align: center; padding: 2rem; color: #6c7e9e; font-size: 0.85rem; border-top: 1px solid #eef2f8; }
+    @media (max-width: 768px) { .container { padding: 0 1.5rem; } .hero-content h1 { font-size: 2.4rem; } .hero-img img { width: 200px; height: 200px; } .nav-links { gap: 1rem; } section { padding: 3rem 0; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-flex">
+    <div class="logo" id="logoText" data-field="logo">Noime Jovy Marie F. Jabanag</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#works">Works</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <section id="home">
+    <div class="container hero">
+      <div class="hero-content">
+        <h1>Creative <span class="highlight">Designer</span> & <br> Frontend Developer</h1>
+        <p id="heroBio" class="editable" data-field="bio">Building thoughtful digital experiences with code and creativity. Based in Philippines, working globally.</p>
+        <a href="#works" class="btn">View projects <i class="fas fa-arrow-right"></i></a>
+        <a href="#contact" class="btn btn-outline" style="margin-left: 1rem;">Let's talk</a>
+      </div>
+      <div class="hero-img">
+        <img id="profileImg" src="N.png" alt="profile avatar" style="object-fit: cover;">
+        <div style="font-size: 0.7rem; margin-top: 8px; color:#8a99b4;">(click image to change)</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">My Skills & Tools</h2>
+      <div class="skills-grid" id="skillsGrid"></div>
+      <div style="margin-top: 1.5rem; text-align: right;">
+        <button id="addSkillBtn" class="btn" style="background:#eef3fc; color:#1f2b3c;"><i class="fas fa-plus"></i> Add new skill</button>
+      </div>
+      <p class="edit-hint"><i class="fas fa-pen"></i> Click on any skill name or description to edit them directly.</p>
+    </div>
+  </section>
+
+  <section id="works">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid" id="projectsGrid"></div>
+      <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center;">
+        <button id="addProjectBtn" class="btn"><i class="fas fa-plus"></i> Add new project</button>
+        <button id="resetDemoBtn" class="btn btn-outline"><i class="fas fa-undo-alt"></i> Reset demo data</button>
+      </div>
+      <p class="edit-hint" style="display: block; text-align: center; margin-top: 1rem;"><i class="fas fa-pen"></i> Click on project title, description or tags to edit inline. Changes save automatically.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container contact-flex">
+      <div class="contact-info">
+        <h2 class="section-title" style="margin-bottom: 1rem;">Let's Connect</h2>
+        <p id="contactText" class="editable" data-field="contactText">Interested in collaboration? Feel free to reach out for freelance or full-time opportunities.</p>
+        <div class="social-links">
+          <a href="https://github.com/mariejab" id="githubLink" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/noime-jabanag-a47b55363" id="linkedinLink" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:njabanag@gmail.com" id="emailLink"><i class="fas fa-envelope"></i></a>
+        </div>
+        <div style="margin-top: 1rem;">
+          <button id="editSocialBtns" class="btn-outline btn" style="padding: 0.3rem 1rem; font-size:0.8rem;"><i class="fas fa-link"></i> Edit social links</button>
+        </div>
+      </div>
+      <div style="flex:1; background:#f8fafd; border-radius: 2rem; padding: 1.5rem; text-align:center;">
+        <i class="fas fa-paintbrush" style="font-size: 2.5rem; color:#2666cf;"></i>
+        <p style="margin-top:0.8rem;">Available for freelance & collaborations</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p id="footerNote">© 2026 Noime Jovy Marie Jabanag — Built with ♡ for creatives. Click any text to customize!</p>
+</footer>
+
+<script>
+  let skillsData = [
+    { id: "s1", icon: "fab fa-figma", name: "Figma", desc: "UI/UX design, prototyping" },
+    { id: "s2", icon: "fab fa-react", name: "React", desc: "Hooks, context, performance" },
+    { id: "s3", icon: "fab fa-js", name: "JavaScript", desc: "ES6+, TypeScript basics" },
+    { id: "s4", icon: "fas fa-palette", name: "Visual Design", desc: "Branding, color theory" }
+  ];
+
+  let projectsData = [
+    { id: "p1", title: "Bloom Finance", desc: "Financial dashboard for personal investors", tags: ["Vue", "D3", "Node"], iconEmoji: "📊" },
+    { id: "p2", title: "Studio Mono", desc: "Creative agency portfolio & custom CMS", tags: ["GSAP", "WordPress", "PHP"], iconEmoji: "🎨" },
+    { id: "p3", title: "JanCasRob Apartment Smart Contract and Monitoring System", desc: "A blockchain-based smart contract system for apartment monitoring", tags: ["Design", "Development", "Blockchain"], iconEmoji: "🏢" }
+  ];
+
+  function loadFromStorage() {
+    const storedSkills = localStorage.getItem("portfolio_skills");
+    const storedProjects = localStorage.getItem("portfolio_projects");
+    if (storedSkills) skillsData = JSON.parse(storedSkills);
+    if (storedProjects) projectsData = JSON.parse(storedProjects);
+  }
+  function persistData() {
+    localStorage.setItem("portfolio_skills", JSON.stringify(skillsData));
+    localStorage.setItem("portfolio_projects", JSON.stringify(projectsData));
+  }
+
+  function escapeHtml(str) { return str.replace(/[&<>]/g, function(m){if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+
+  function renderSkills() {
+    const grid = document.getElementById("skillsGrid");
+    if (!grid) return;
+    grid.innerHTML = "";
+    skillsData.forEach(skill => {
+      const card = document.createElement("div");
+      card.className = "skill-card";
+      card.setAttribute("data-id", skill.id);
+      card.innerHTML = `<i class="${skill.icon}"></i><h3 class="editable-skill-name" data-id="${skill.id}" data-field="name" contenteditable="false">${escapeHtml(skill.name)}</h3><p class="editable-skill-desc" data-id="${skill.id}" data-field="desc" contenteditable="false">${escapeHtml(skill.desc)}</p><button class="delete-skill" data-id="${skill.id}" style="background:none; border:none; color:#b91c1c; font-size:0.8rem; margin-top:8px; cursor:pointer;"><i class="fas fa-trash-alt"></i> remove</button>`;
+      grid.appendChild(card);
+    });
+    document.querySelectorAll('.editable-skill-name, .editable-skill-desc').forEach(el => {
+      el.setAttribute('contenteditable', 'true');
+      el.addEventListener('blur', function() {
+        const id = this.getAttribute('data-id');
+        const field = this.getAttribute('data-field');
+        const newValue = this.innerText.trim();
+        const skill = skillsData.find(s => s.id === id);
+        if (skill && field) { skill[field] = newValue; persistData(); renderSkills(); }
+      });
+      el.addEventListener('keypress', (e) => { if(e.key === 'Enter') e.preventDefault(); });
+    });
+    document.querySelectorAll('.delete-skill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-id');
+        skillsData = skillsData.filter(s => s.id !== id);
+        persistData();
+        renderSkills();
+      });
+    });
+  }
+
+  function renderProjects() {
+    const container = document.getElementById("projectsGrid");
+    if (!container) return;
+    container.innerHTML = "";
+    projectsData.forEach(proj => {
+      const card = document.createElement("div");
+      card.className = "project-card";
+      card.setAttribute("data-pid", proj.id);
+      card.innerHTML = `<div class="project-img">${proj.iconEmoji || '📁'}</div><div class="project-info"><h3 class="editable-proj-title" data-pid="${proj.id}" contenteditable="true">${escapeHtml(proj.title)}</h3><p class="editable-proj-desc" data-pid="${proj.id}" contenteditable="true">${escapeHtml(proj.desc)}</p><div class="project-tags" data-pid="${proj.id}">${proj.tags.map(tag => `<span class="tag editable-tag" data-tagidx="${proj.tags.indexOf(tag)}" data-pid="${proj.id}" contenteditable="true">${escapeHtml(tag)}</span>`).join('')}<button class="add-tag-btn" data-pid="${proj.id}" style="background:transparent; border:1px dashed #9aaec2; border-radius:40px; font-size:0.7rem; padding:2px 8px;">+ tag</button></div><a href="#" class="project-link demo-link">View case →</a><div style="margin-top:12px;"><button class="delete-project" data-pid="${proj.id}" style="background:transparent; border:none; color:#b91c1c; font-size:0.75rem;"><i class="fas fa-trash"></i> Remove project</button></div></div>`;
+      container.appendChild(card);
+    });
+    document.querySelectorAll('.editable-proj-title, .editable-proj-desc').forEach(el => {
+      el.addEventListener('blur', function() {
+        const pid = this.getAttribute('data-pid');
+        const project = projectsData.find(p => p.id === pid);
+        if (!project) return;
+        if (this.classList.contains('editable-proj-title')) project.title = this.innerText.trim();
+        if (this.classList.contains('editable-proj-desc')) project.desc = this.innerText.trim();
+        persistData();
+      });
+    });
+    document.querySelectorAll('.editable-tag').forEach(tagEl => {
+      tagEl.addEventListener('blur', function() {
+        const pid = this.getAttribute('data-pid');
+        const tagIdx = parseInt(this.getAttribute('data-tagidx'));
+        const project = projectsData.find(p => p.id === pid);
+        if (project && project.tags[tagIdx]) { project.tags[tagIdx] = this.innerText.trim(); persistData(); renderProjects(); }
+      });
+    });
+    document.querySelectorAll('.add-tag-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const pid = btn.getAttribute('data-pid');
+        const project = projectsData.find(p => p.id === pid);
+        if (project) {
+          let newTag = prompt("Enter new tag name", "new skill");
+          if (newTag && newTag.trim()) { project.tags.push(newTag.trim()); persistData(); renderProjects(); }
+        }
+      });
+    });
+    document.querySelectorAll('.delete-project').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const pid = btn.getAttribute('data-pid');
+        projectsData = projectsData.filter(p => p.id !== pid);
+        persistData();
+        renderProjects();
+      });
+    });
+  }
+
+  function addNewSkill() { const newId = "s" + Date.now(); skillsData.push({ id: newId, icon: "fas fa-code", name: "New Skill", desc: "Describe your skill" }); persistData(); renderSkills(); }
+  function addNewProject() { const newId = "p" + Date.now(); projectsData.push({ id: newId, title: "New project", desc: "Describe your amazing work", tags: ["design", "development"], iconEmoji: "✨" }); persistData(); renderProjects(); }
+  
+  function resetDemo() {
+    skillsData = [
+      { id: "s1", icon: "fab fa-figma", name: "Figma", desc: "UI/UX design, prototyping" },
+      { id: "s2", icon: "fab fa-react", name: "React", desc: "Hooks, context, performance" },
+      { id: "s3", icon: "fab fa-js", name: "JavaScript", desc: "ES6+, TypeScript basics" },
+      { id: "s4", icon: "fas fa-palette", name: "Visual Design", desc: "Branding, color theory" }
+    ];
+    projectsData = [
+      { id: "p1", title: "Bloom Finance", desc: "Financial dashboard for personal investors", tags: ["Vue", "D3", "Node"], iconEmoji: "📊" },
+      { id: "p2", title: "Studio Mono", desc: "Creative agency portfolio & custom CMS", tags: ["GSAP", "WordPress", "PHP"], iconEmoji: "🎨" },
+      { id: "p3", title: "JanCasRob Apartment Smart Contract and Monitoring System", desc: "A blockchain-based smart contract system for apartment monitoring", tags: ["Design", "Development", "Blockchain"], iconEmoji: "🏢" }
+    ];
+    persistData();
+    renderSkills();
+    renderProjects();
+    document.getElementById("heroBio") && (document.getElementById("heroBio").innerText = "Building thoughtful digital experiences with code and creativity. Based in Philippines, working globally.");
+    document.getElementById("logoText") && (document.getElementById("logoText").innerText = "Noime Jovy Marie F. Jabanag");
+    document.getElementById("footerNote") && (document.getElementById("footerNote").innerHTML = "© 2026 Noime Jovy Marie Jabanag — Built with ♡ for creatives. Click any text to customize!");
+  }
+
+  function setupGlobalEditable() {
+    const bioEl = document.getElementById("heroBio");
+    if(bioEl) { bioEl.setAttribute("contenteditable", "true"); bioEl.addEventListener("blur", () => { localStorage.setItem("customBio", bioEl.innerText); }); const saved = localStorage.getItem("customBio"); if(saved) bioEl.innerText = saved; }
+    const logoEl = document.getElementById("logoText");
+    if(logoEl){ logoEl.setAttribute("contenteditable", "true"); logoEl.addEventListener("blur", () => { localStorage.setItem("customLogo", logoEl.innerText); }); const savedLogo = localStorage.getItem("customLogo"); if(savedLogo) logoEl.innerText = savedLogo; }
+    const footerEl = document.getElementById("footerNote");
+    if(footerEl){ footerEl.setAttribute("contenteditable", "true"); footerEl.addEventListener("blur", () => { localStorage.setItem("customFooter", footerEl.innerHTML); }); const savedFoot = localStorage.getItem("customFooter"); if(savedFoot) footerEl.innerHTML = savedFoot; }
+    const contactP = document.getElementById("contactText");
+    if(contactP){ contactP.setAttribute("contenteditable", "true"); contactP.addEventListener("blur", () => { localStorage.setItem("contactText", contactP.innerText); }); const savedContact = localStorage.getItem("contactText"); if(savedContact) contactP.innerText = savedContact; }
+    const profImg = document.getElementById("profileImg");
+    if(profImg) { profImg.addEventListener("click", () => { const newUrl = prompt("Enter image URL (avatar/photo)", profImg.src); if(newUrl) profImg.src = newUrl; }); }
+    
+    // Edit social links button - preserves your correct links
+    document.getElementById("editSocialBtns")?.addEventListener("click", () => {
+      const git = prompt("GitHub URL", "https://github.com/mariejab");
+      const linked = prompt("LinkedIn URL", "https://www.linkedin.com/in/noime-jabanag-a47b55363");
+      const email = prompt("Email address", "njabanag@gmail.com");
+      if(git && document.getElementById("githubLink")) document.getElementById("githubLink").href = git;
+      if(linked && document.getElementById("linkedinLink")) document.getElementById("linkedinLink").href = linked;
+      if(email && document.getElementById("emailLink")) document.getElementById("emailLink").href = `mailto:${email}`;
+    });
+  }
+
+  loadFromStorage();
+  renderSkills();
+  renderProjects();
+  setupGlobalEditable();
+  document.getElementById("addSkillBtn")?.addEventListener("click", addNewSkill);
+  document.getElementById("addProjectBtn")?.addEventListener("click", addNewProject);
+  document.getElementById("resetDemoBtn")?.addEventListener("click", resetDemo);
+</script>
+</body>
+</html>
