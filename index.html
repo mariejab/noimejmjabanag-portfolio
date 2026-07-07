@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Noime Jovy Marie Jabanag | Portfolio</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -20,6 +23,7 @@
     .btn-outline { background: transparent; border: 1px solid #1f2b3c; color: #1f2b3c; }
     .btn-outline:hover { background: #1f2b3c; color: white; }
     .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
+    .btn-sm { padding: 0.3rem 0.8rem; font-size: 0.8rem; }
     section { padding: 5rem 0; border-bottom: 1px solid #edf2f7; }
     .section-title { font-size: 2rem; font-weight: 700; margin-bottom: 2rem; letter-spacing: -0.01em; position: relative; display: inline-block; }
     .section-title:after { content: ''; position: absolute; bottom: -10px; left: 0; width: 50%; height: 3px; background: #2666cf; border-radius: 4px; }
@@ -36,16 +40,25 @@
     .skill-card h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
     .skill-card p { font-size: 0.9rem; color: #5e6f8d; }
     .skill-card:hover { transform: translateY(-5px); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1); }
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
-    .project-card { background: white; border-radius: 24px; overflow: hidden; transition: all 0.25s; box-shadow: 0 8px 20px rgba(0,0,0,0.02), 0 0 0 1px #edf2f7; }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; }
+    .project-card { background: white; border-radius: 24px; overflow: hidden; transition: all 0.25s; box-shadow: 0 8px 20px rgba(0,0,0,0.02), 0 0 0 1px #edf2f7; display: flex; flex-direction: column; }
     .project-card:hover { transform: translateY(-6px); box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12); }
-    .project-img { background: #eef2fa; height: 180px; display: flex; align-items: center; justify-content: center; color: #2c3e66; font-size: 3rem; }
-    .project-info { padding: 1.5rem; }
-    .project-info h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
-    .project-info p { color: #52647a; margin-bottom: 1rem; font-size: 0.95rem; }
-    .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem; }
-    .tag { background: #eef3fc; padding: 0.2rem 0.8rem; border-radius: 40px; font-size: 0.75rem; font-weight: 500; color: #1f4f9e; }
-    .project-link { text-decoration: none; font-weight: 600; color: #2666cf; display: inline-flex; align-items: center; gap: 6px; }
+    .project-img { background: #eef2fa; height: 180px; display: flex; align-items: center; justify-content: center; font-size: 4rem; position: relative; cursor: pointer; transition: background 0.2s; }
+    .project-img:hover { background: #e3e9f3; }
+    .project-img .emoji-edit-hint { position: absolute; bottom: 8px; right: 12px; font-size: 0.65rem; color: #7a8ba8; background: rgba(255,255,255,0.85); padding: 2px 10px; border-radius: 20px; opacity: 0; transition: opacity 0.2s; }
+    .project-img:hover .emoji-edit-hint { opacity: 1; }
+    .project-info { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .project-info h3 { font-size: 1.4rem; margin-bottom: 0.5rem; cursor: pointer; }
+    .project-info h3:hover { color: #2666cf; }
+    .project-info p { color: #52647a; margin-bottom: 1rem; font-size: 0.95rem; cursor: pointer; }
+    .project-info p:hover { background: #f5f8fc; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+    .tag { background: #eef3fc; padding: 0.2rem 0.8rem; border-radius: 40px; font-size: 0.75rem; font-weight: 500; color: #1f4f9e; cursor: pointer; transition: background 0.2s; }
+    .tag:hover { background: #dce6f5; }
+    .project-links { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: auto; padding-top: 0.8rem; border-top: 1px solid #edf2f7; }
+    .project-link { text-decoration: none; font-weight: 600; color: #2666cf; display: inline-flex; align-items: center; gap: 6px; font-size: 0.9rem; transition: color 0.2s; }
+    .project-link:hover { color: #1a4f9e; text-decoration: underline; }
+    .project-link .fa-external-link-alt { font-size: 0.7rem; }
     .edit-hint { font-size: 0.75rem; background: #f9fafb; display: inline-block; padding: 0.2rem 0.6rem; border-radius: 20px; margin-left: 1rem; color: #5f7a9e; }
     .editable { cursor: pointer; transition: background 0.1s; padding: 0 0.1rem; border-radius: 8px; }
     .editable:hover { background: #fff2df; }
@@ -55,7 +68,12 @@
     .social-links a { color: #2c3e66; font-size: 1.6rem; transition: color 0.2s; }
     .social-links a:hover { color: #2666cf; }
     footer { text-align: center; padding: 2rem; color: #6c7e9e; font-size: 0.85rem; border-top: 1px solid #eef2f8; }
-    @media (max-width: 768px) { .container { padding: 0 1.5rem; } .hero-content h1 { font-size: 2.4rem; } .hero-img img { width: 200px; height: 200px; } .nav-links { gap: 1rem; } section { padding: 3rem 0; } }
+    .project-actions { display: flex; gap: 0.5rem; margin-top: 0.8rem; flex-wrap: wrap; }
+    .project-actions button { background: transparent; border: 1px solid #e0e6ed; border-radius: 20px; padding: 0.2rem 0.8rem; font-size: 0.7rem; cursor: pointer; transition: all 0.2s; color: #4a5b6e; }
+    .project-actions button:hover { background: #eef3fc; border-color: #2666cf; color: #2666cf; }
+    .project-actions .btn-delete-project { border-color: #fde8e8; color: #b91c1c; }
+    .project-actions .btn-delete-project:hover { background: #fde8e8; border-color: #b91c1c; }
+    @media (max-width: 768px) { .container { padding: 0 1.5rem; } .hero-content h1 { font-size: 2.4rem; } .hero-img img { width: 200px; height: 200px; } .nav-links { gap: 1rem; } section { padding: 3rem 0; } .projects-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -103,11 +121,11 @@
     <div class="container">
       <h2 class="section-title">Featured Projects</h2>
       <div class="projects-grid" id="projectsGrid"></div>
-      <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center;">
+      <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
         <button id="addProjectBtn" class="btn"><i class="fas fa-plus"></i> Add new project</button>
         <button id="resetDemoBtn" class="btn btn-outline"><i class="fas fa-undo-alt"></i> Reset demo data</button>
       </div>
-      <p class="edit-hint" style="display: block; text-align: center; margin-top: 1rem;"><i class="fas fa-pen"></i> Click on project title, description or tags to edit inline. Changes save automatically.</p>
+      <p class="edit-hint" style="display: block; text-align: center; margin-top: 1rem;"><i class="fas fa-pen"></i> Click on project title, description, tags, emoji or links to edit inline. Changes save automatically.</p>
     </div>
   </section>
 
@@ -138,6 +156,9 @@
 </footer>
 
 <script>
+  // ============================================================
+  // DATA
+  // ============================================================
   let skillsData = [
     { id: "s1", icon: "fab fa-figma", name: "Figma", desc: "UI/UX design, prototyping" },
     { id: "s2", icon: "fab fa-react", name: "React", desc: "Hooks, context, performance" },
@@ -146,24 +167,66 @@
   ];
 
   let projectsData = [
-    { id: "p1", title: "Bloom Finance", desc: "Financial dashboard for personal investors", tags: ["Vue", "D3", "Node"], iconEmoji: "📊" },
-    { id: "p2", title: "Studio Mono", desc: "Creative agency portfolio & custom CMS", tags: ["GSAP", "WordPress", "PHP"], iconEmoji: "🎨" },
-    { id: "p3", title: "JanCasRob Apartment Smart Contract and Monitoring System", desc: "A blockchain-based smart contract system for apartment monitoring", tags: ["Design", "Development", "Blockchain"], iconEmoji: "🏢" }
+    { 
+      id: "p1", 
+      title: "Bloom Finance", 
+      desc: "Financial dashboard for personal investors", 
+      tags: ["Vue", "D3", "Node"], 
+      iconEmoji: "📊",
+      demoUrl: "https://bloom-finance-demo.netlify.app",
+      githubUrl: "https://github.com/mariejab/bloom-finance",
+      liveUrl: "https://bloom-finance.netlify.app"
+    },
+    { 
+      id: "p2", 
+      title: "Studio Mono", 
+      desc: "Creative agency portfolio & custom CMS", 
+      tags: ["GSAP", "WordPress", "PHP"], 
+      iconEmoji: "🎨",
+      demoUrl: "https://studio-mono-demo.netlify.app",
+      githubUrl: "https://github.com/mariejab/studio-mono",
+      liveUrl: "https://studiomono.com"
+    },
+    { 
+      id: "p3", 
+      title: "JanCasRob Apartment Smart Contract", 
+      desc: "A blockchain-based smart contract system for apartment monitoring", 
+      tags: ["Design", "Development", "Blockchain"], 
+      iconEmoji: "🏢",
+      demoUrl: "https://jancasrob-demo.netlify.app",
+      githubUrl: "https://github.com/mariejab/jancasrob-blockchain",
+      liveUrl: "https://jancasrob.com"
+    }
   ];
 
+  // ============================================================
+  // STORAGE HELPERS
+  // ============================================================
   function loadFromStorage() {
     const storedSkills = localStorage.getItem("portfolio_skills");
     const storedProjects = localStorage.getItem("portfolio_projects");
     if (storedSkills) skillsData = JSON.parse(storedSkills);
     if (storedProjects) projectsData = JSON.parse(storedProjects);
   }
+
   function persistData() {
     localStorage.setItem("portfolio_skills", JSON.stringify(skillsData));
     localStorage.setItem("portfolio_projects", JSON.stringify(projectsData));
   }
 
-  function escapeHtml(str) { return str.replace(/[&<>]/g, function(m){if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+  function escapeHtml(str) { 
+    if (!str) return '';
+    return str.replace(/[&<>]/g, function(m){
+      if(m==='&') return '&amp;'; 
+      if(m==='<') return '&lt;'; 
+      if(m==='>') return '&gt;'; 
+      return m;
+    }); 
+  }
 
+  // ============================================================
+  // RENDER SKILLS
+  // ============================================================
   function renderSkills() {
     const grid = document.getElementById("skillsGrid");
     if (!grid) return;
@@ -172,20 +235,31 @@
       const card = document.createElement("div");
       card.className = "skill-card";
       card.setAttribute("data-id", skill.id);
-      card.innerHTML = `<i class="${skill.icon}"></i><h3 class="editable-skill-name" data-id="${skill.id}" data-field="name" contenteditable="false">${escapeHtml(skill.name)}</h3><p class="editable-skill-desc" data-id="${skill.id}" data-field="desc" contenteditable="false">${escapeHtml(skill.desc)}</p><button class="delete-skill" data-id="${skill.id}" style="background:none; border:none; color:#b91c1c; font-size:0.8rem; margin-top:8px; cursor:pointer;"><i class="fas fa-trash-alt"></i> remove</button>`;
+      card.innerHTML = `
+        <i class="${skill.icon}"></i>
+        <h3 class="editable-skill-name" data-id="${skill.id}" data-field="name" contenteditable="true">${escapeHtml(skill.name)}</h3>
+        <p class="editable-skill-desc" data-id="${skill.id}" data-field="desc" contenteditable="true">${escapeHtml(skill.desc)}</p>
+        <button class="delete-skill" data-id="${skill.id}" style="background:none; border:none; color:#b91c1c; font-size:0.8rem; margin-top:8px; cursor:pointer;">
+          <i class="fas fa-trash-alt"></i> remove
+        </button>
+      `;
       grid.appendChild(card);
     });
+
     document.querySelectorAll('.editable-skill-name, .editable-skill-desc').forEach(el => {
-      el.setAttribute('contenteditable', 'true');
       el.addEventListener('blur', function() {
         const id = this.getAttribute('data-id');
         const field = this.getAttribute('data-field');
         const newValue = this.innerText.trim();
         const skill = skillsData.find(s => s.id === id);
-        if (skill && field) { skill[field] = newValue; persistData(); renderSkills(); }
+        if (skill && field) { 
+          skill[field] = newValue; 
+          persistData(); 
+        }
       });
-      el.addEventListener('keypress', (e) => { if(e.key === 'Enter') e.preventDefault(); });
+      el.addEventListener('keypress', (e) => { if(e.key === 'Enter') { e.preventDefault(); this.blur(); } });
     });
+
     document.querySelectorAll('.delete-skill').forEach(btn => {
       btn.addEventListener('click', () => {
         const id = btn.getAttribute('data-id');
@@ -196,17 +270,52 @@
     });
   }
 
+  // ============================================================
+  // RENDER PROJECTS
+  // ============================================================
   function renderProjects() {
     const container = document.getElementById("projectsGrid");
     if (!container) return;
     container.innerHTML = "";
+    
     projectsData.forEach(proj => {
       const card = document.createElement("div");
       card.className = "project-card";
       card.setAttribute("data-pid", proj.id);
-      card.innerHTML = `<div class="project-img">${proj.iconEmoji || '📁'}</div><div class="project-info"><h3 class="editable-proj-title" data-pid="${proj.id}" contenteditable="true">${escapeHtml(proj.title)}</h3><p class="editable-proj-desc" data-pid="${proj.id}" contenteditable="true">${escapeHtml(proj.desc)}</p><div class="project-tags" data-pid="${proj.id}">${proj.tags.map(tag => `<span class="tag editable-tag" data-tagidx="${proj.tags.indexOf(tag)}" data-pid="${proj.id}" contenteditable="true">${escapeHtml(tag)}</span>`).join('')}<button class="add-tag-btn" data-pid="${proj.id}" style="background:transparent; border:1px dashed #9aaec2; border-radius:40px; font-size:0.7rem; padding:2px 8px;">+ tag</button></div><a href="#" class="project-link demo-link">View case →</a><div style="margin-top:12px;"><button class="delete-project" data-pid="${proj.id}" style="background:transparent; border:none; color:#b91c1c; font-size:0.75rem;"><i class="fas fa-trash"></i> Remove project</button></div></div>`;
+      
+      card.innerHTML = `
+        <div class="project-img" data-pid="${proj.id}" onclick="editEmoji('${proj.id}')">
+          ${proj.iconEmoji || '📁'}
+          <span class="emoji-edit-hint"><i class="fas fa-pen"></i> click to change</span>
+        </div>
+        <div class="project-info">
+          <h3 class="editable-proj-title" data-pid="${proj.id}" contenteditable="true">${escapeHtml(proj.title)}</h3>
+          <p class="editable-proj-desc" data-pid="${proj.id}" contenteditable="true">${escapeHtml(proj.desc)}</p>
+          <div class="project-tags" data-pid="${proj.id}">
+            ${proj.tags.map((tag, idx) => 
+              `<span class="tag editable-tag" data-tagidx="${idx}" data-pid="${proj.id}" contenteditable="true">${escapeHtml(tag)}</span>`
+            ).join('')}
+            <button class="add-tag-btn" data-pid="${proj.id}" style="background:transparent; border:1px dashed #9aaec2; border-radius:40px; font-size:0.7rem; padding:2px 8px; cursor:pointer;">+ tag</button>
+          </div>
+          <div class="project-links">
+            ${proj.demoUrl ? `<a href="${proj.demoUrl}" target="_blank" rel="noopener noreferrer" class="project-link editable-link" data-pid="${proj.id}" data-linktype="demoUrl" contenteditable="false">🔗 Demo <i class="fas fa-external-link-alt"></i></a>` : ''}
+            ${proj.githubUrl ? `<a href="${proj.githubUrl}" target="_blank" rel="noopener noreferrer" class="project-link editable-link" data-pid="${proj.id}" data-linktype="githubUrl" contenteditable="false"><i class="fab fa-github"></i> Code <i class="fas fa-external-link-alt"></i></a>` : ''}
+            ${proj.liveUrl ? `<a href="${proj.liveUrl}" target="_blank" rel="noopener noreferrer" class="project-link editable-link" data-pid="${proj.id}" data-linktype="liveUrl" contenteditable="false">🌐 Live <i class="fas fa-external-link-alt"></i></a>` : ''}
+          </div>
+          <div class="project-actions">
+            <button class="add-link-btn" data-pid="${proj.id}" style="border-color: #2666cf; color: #2666cf;">
+              <i class="fas fa-plus"></i> Add link
+            </button>
+            <button class="btn-delete-project" data-pid="${proj.id}">
+              <i class="fas fa-trash"></i> Remove
+            </button>
+          </div>
+        </div>
+      `;
       container.appendChild(card);
     });
+
+    // Title & description editing
     document.querySelectorAll('.editable-proj-title, .editable-proj-desc').forEach(el => {
       el.addEventListener('blur', function() {
         const pid = this.getAttribute('data-pid');
@@ -216,15 +325,42 @@
         if (this.classList.contains('editable-proj-desc')) project.desc = this.innerText.trim();
         persistData();
       });
+      el.addEventListener('keypress', (e) => { if(e.key === 'Enter') { e.preventDefault(); this.blur(); } });
     });
+
+    // Tag editing
     document.querySelectorAll('.editable-tag').forEach(tagEl => {
       tagEl.addEventListener('blur', function() {
         const pid = this.getAttribute('data-pid');
         const tagIdx = parseInt(this.getAttribute('data-tagidx'));
         const project = projectsData.find(p => p.id === pid);
-        if (project && project.tags[tagIdx]) { project.tags[tagIdx] = this.innerText.trim(); persistData(); renderProjects(); }
+        if (project && project.tags[tagIdx] !== undefined) { 
+          project.tags[tagIdx] = this.innerText.trim(); 
+          persistData(); 
+        }
+      });
+      tagEl.addEventListener('keypress', (e) => { if(e.key === 'Enter') { e.preventDefault(); this.blur(); } });
+    });
+
+    // Link editing - make links clickable and editable
+    document.querySelectorAll('.editable-link').forEach(linkEl => {
+      linkEl.addEventListener('dblclick', function(e) {
+        e.preventDefault();
+        const pid = this.getAttribute('data-pid');
+        const linkType = this.getAttribute('data-linktype');
+        const project = projectsData.find(p => p.id === pid);
+        if (!project) return;
+        const currentUrl = project[linkType] || '';
+        const newUrl = prompt(`Edit ${linkType} URL:`, currentUrl);
+        if (newUrl !== null) {
+          project[linkType] = newUrl.trim();
+          persistData();
+          renderProjects();
+        }
       });
     });
+
+    // Add tag
     document.querySelectorAll('.add-tag-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -232,22 +368,99 @@
         const project = projectsData.find(p => p.id === pid);
         if (project) {
           let newTag = prompt("Enter new tag name", "new skill");
-          if (newTag && newTag.trim()) { project.tags.push(newTag.trim()); persistData(); renderProjects(); }
+          if (newTag && newTag.trim()) { 
+            project.tags.push(newTag.trim()); 
+            persistData(); 
+            renderProjects(); 
+          }
         }
       });
     });
-    document.querySelectorAll('.delete-project').forEach(btn => {
+
+    // Add link
+    document.querySelectorAll('.add-link-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const pid = btn.getAttribute('data-pid');
+        const project = projectsData.find(p => p.id === pid);
+        if (!project) return;
+        
+        const linkTypes = [
+          { key: 'demoUrl', label: 'Demo URL' },
+          { key: 'githubUrl', label: 'GitHub URL' },
+          { key: 'liveUrl', label: 'Live URL' }
+        ];
+        
+        const options = linkTypes.map((t, i) => `${i+1}. ${t.label}${project[t.key] ? ' ✅' : ''}`).join('\n');
+        const choice = prompt(`Select link type to add/edit:\n${options}\n\nEnter number (1-3):`, "1");
+        if (!choice) return;
+        
+        const idx = parseInt(choice) - 1;
+        if (idx >= 0 && idx < linkTypes.length) {
+          const linkType = linkTypes[idx];
+          const currentUrl = project[linkType.key] || '';
+          const newUrl = prompt(`Enter ${linkType.label}:`, currentUrl);
+          if (newUrl !== null) {
+            project[linkType.key] = newUrl.trim();
+            persistData();
+            renderProjects();
+          }
+        }
+      });
+    });
+
+    // Delete project
+    document.querySelectorAll('.btn-delete-project').forEach(btn => {
       btn.addEventListener('click', () => {
         const pid = btn.getAttribute('data-pid');
-        projectsData = projectsData.filter(p => p.id !== pid);
-        persistData();
-        renderProjects();
+        if (confirm('Delete this project?')) {
+          projectsData = projectsData.filter(p => p.id !== pid);
+          persistData();
+          renderProjects();
+        }
       });
     });
   }
 
-  function addNewSkill() { const newId = "s" + Date.now(); skillsData.push({ id: newId, icon: "fas fa-code", name: "New Skill", desc: "Describe your skill" }); persistData(); renderSkills(); }
-  function addNewProject() { const newId = "p" + Date.now(); projectsData.push({ id: newId, title: "New project", desc: "Describe your amazing work", tags: ["design", "development"], iconEmoji: "✨" }); persistData(); renderProjects(); }
+  // ============================================================
+  // EDIT EMOJI FUNCTION
+  // ============================================================
+  window.editEmoji = function(pid) {
+    const project = projectsData.find(p => p.id === pid);
+    if (!project) return;
+    const newEmoji = prompt("Enter emoji for this project:", project.iconEmoji || '📁');
+    if (newEmoji !== null && newEmoji.trim()) {
+      project.iconEmoji = newEmoji.trim();
+      persistData();
+      renderProjects();
+    }
+  };
+
+  // ============================================================
+  // ADD / RESET FUNCTIONS
+  // ============================================================
+  function addNewSkill() { 
+    const newId = "s" + Date.now(); 
+    skillsData.push({ id: newId, icon: "fas fa-code", name: "New Skill", desc: "Describe your skill" }); 
+    persistData(); 
+    renderSkills(); 
+  }
+
+  function addNewProject() { 
+    const newId = "p" + Date.now(); 
+    projectsData.push({ 
+      id: newId, 
+      title: "New project", 
+      desc: "Describe your amazing work", 
+      tags: ["design", "development"], 
+      iconEmoji: "✨",
+      demoUrl: "",
+      githubUrl: "",
+      liveUrl: ""
+    }); 
+    persistData(); 
+    renderProjects(); 
+  }
   
   function resetDemo() {
     skillsData = [
@@ -257,9 +470,36 @@
       { id: "s4", icon: "fas fa-palette", name: "Visual Design", desc: "Branding, color theory" }
     ];
     projectsData = [
-      { id: "p1", title: "Bloom Finance", desc: "Financial dashboard for personal investors", tags: ["Vue", "D3", "Node"], iconEmoji: "📊" },
-      { id: "p2", title: "Studio Mono", desc: "Creative agency portfolio & custom CMS", tags: ["GSAP", "WordPress", "PHP"], iconEmoji: "🎨" },
-      { id: "p3", title: "JanCasRob Apartment Smart Contract and Monitoring System", desc: "A blockchain-based smart contract system for apartment monitoring", tags: ["Design", "Development", "Blockchain"], iconEmoji: "🏢" }
+      { 
+        id: "p1", 
+        title: "Bloom Finance", 
+        desc: "Financial dashboard for personal investors", 
+        tags: ["Vue", "D3", "Node"], 
+        iconEmoji: "📊",
+        demoUrl: "https://bloom-finance-demo.netlify.app",
+        githubUrl: "https://github.com/mariejab/bloom-finance",
+        liveUrl: "https://bloom-finance.netlify.app"
+      },
+      { 
+        id: "p2", 
+        title: "Studio Mono", 
+        desc: "Creative agency portfolio & custom CMS", 
+        tags: ["GSAP", "WordPress", "PHP"], 
+        iconEmoji: "🎨",
+        demoUrl: "https://studio-mono-demo.netlify.app",
+        githubUrl: "https://github.com/mariejab/studio-mono",
+        liveUrl: "https://studiomono.com"
+      },
+      { 
+        id: "p3", 
+        title: "JanCasRob Apartment Smart Contract", 
+        desc: "A blockchain-based smart contract system for apartment monitoring", 
+        tags: ["Design", "Development", "Blockchain"], 
+        iconEmoji: "🏢",
+        demoUrl: "https://jancasrob-demo.netlify.app",
+        githubUrl: "https://github.com/mariejab/jancasrob-blockchain",
+        liveUrl: "https://jancasrob.com"
+      }
     ];
     persistData();
     renderSkills();
@@ -269,19 +509,51 @@
     document.getElementById("footerNote") && (document.getElementById("footerNote").innerHTML = "© 2026 Noime Jovy Marie Jabanag — Built with ♡ for creatives. Click any text to customize!");
   }
 
+  // ============================================================
+  // SETUP EDITABLE ELEMENTS
+  // ============================================================
   function setupGlobalEditable() {
     const bioEl = document.getElementById("heroBio");
-    if(bioEl) { bioEl.setAttribute("contenteditable", "true"); bioEl.addEventListener("blur", () => { localStorage.setItem("customBio", bioEl.innerText); }); const saved = localStorage.getItem("customBio"); if(saved) bioEl.innerText = saved; }
-    const logoEl = document.getElementById("logoText");
-    if(logoEl){ logoEl.setAttribute("contenteditable", "true"); logoEl.addEventListener("blur", () => { localStorage.setItem("customLogo", logoEl.innerText); }); const savedLogo = localStorage.getItem("customLogo"); if(savedLogo) logoEl.innerText = savedLogo; }
-    const footerEl = document.getElementById("footerNote");
-    if(footerEl){ footerEl.setAttribute("contenteditable", "true"); footerEl.addEventListener("blur", () => { localStorage.setItem("customFooter", footerEl.innerHTML); }); const savedFoot = localStorage.getItem("customFooter"); if(savedFoot) footerEl.innerHTML = savedFoot; }
-    const contactP = document.getElementById("contactText");
-    if(contactP){ contactP.setAttribute("contenteditable", "true"); contactP.addEventListener("blur", () => { localStorage.setItem("contactText", contactP.innerText); }); const savedContact = localStorage.getItem("contactText"); if(savedContact) contactP.innerText = savedContact; }
-    const profImg = document.getElementById("profileImg");
-    if(profImg) { profImg.addEventListener("click", () => { const newUrl = prompt("Enter image URL (avatar/photo)", profImg.src); if(newUrl) profImg.src = newUrl; }); }
+    if(bioEl) { 
+      bioEl.setAttribute("contenteditable", "true"); 
+      bioEl.addEventListener("blur", () => { localStorage.setItem("customBio", bioEl.innerText); }); 
+      const saved = localStorage.getItem("customBio"); 
+      if(saved) bioEl.innerText = saved; 
+    }
     
-    // Edit social links button - preserves your correct links
+    const logoEl = document.getElementById("logoText");
+    if(logoEl){ 
+      logoEl.setAttribute("contenteditable", "true"); 
+      logoEl.addEventListener("blur", () => { localStorage.setItem("customLogo", logoEl.innerText); }); 
+      const savedLogo = localStorage.getItem("customLogo"); 
+      if(savedLogo) logoEl.innerText = savedLogo; 
+    }
+    
+    const footerEl = document.getElementById("footerNote");
+    if(footerEl){ 
+      footerEl.setAttribute("contenteditable", "true"); 
+      footerEl.addEventListener("blur", () => { localStorage.setItem("customFooter", footerEl.innerHTML); }); 
+      const savedFoot = localStorage.getItem("customFooter"); 
+      if(savedFoot) footerEl.innerHTML = savedFoot; 
+    }
+    
+    const contactP = document.getElementById("contactText");
+    if(contactP){ 
+      contactP.setAttribute("contenteditable", "true"); 
+      contactP.addEventListener("blur", () => { localStorage.setItem("contactText", contactP.innerText); }); 
+      const savedContact = localStorage.getItem("contactText"); 
+      if(savedContact) contactP.innerText = savedContact; 
+    }
+    
+    const profImg = document.getElementById("profileImg");
+    if(profImg) { 
+      profImg.addEventListener("click", () => { 
+        const newUrl = prompt("Enter image URL (avatar/photo)", profImg.src); 
+        if(newUrl) profImg.src = newUrl; 
+      }); 
+    }
+    
+    // Edit social links
     document.getElementById("editSocialBtns")?.addEventListener("click", () => {
       const git = prompt("GitHub URL", "https://github.com/mariejab");
       const linked = prompt("LinkedIn URL", "https://www.linkedin.com/in/noime-jabanag-a47b55363");
@@ -292,10 +564,14 @@
     });
   }
 
+  // ============================================================
+  // INIT
+  // ============================================================
   loadFromStorage();
   renderSkills();
   renderProjects();
   setupGlobalEditable();
+  
   document.getElementById("addSkillBtn")?.addEventListener("click", addNewSkill);
   document.getElementById("addProjectBtn")?.addEventListener("click", addNewProject);
   document.getElementById("resetDemoBtn")?.addEventListener("click", resetDemo);
